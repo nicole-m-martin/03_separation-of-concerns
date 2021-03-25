@@ -43,15 +43,13 @@ describe('Lab 3 Route Tests', () => {
     });
   });
 
-  // // GET BY ID TEST
-  // it('gets one order by :id', async () => {
-  //   const res = await request(app)
-  //     .get('/api/v1/orders/:id')
-  //     .send({ quantity: 10 });
+  // GET BY ID TEST
+  it('gets one order by :id', async () => {
+    const res = await request(app).get('/api/v1/orders/1');
 
-  //   expect(res.body).toEqual({
-  //     id: '1',
-  //     quantity: 5,
-  //   });
-  // });
+    expect(res.body).toEqual({
+      id: '1',
+      quantity: 10,
+    });
+  });
 });
