@@ -20,7 +20,7 @@ describe('Lab 3 Route Tests', () => {
   });
 
   // POST TEST
-  it('creates a new order in our database and sends a text message', () => {
+  it('Creates a new order in our database and sends a text message', () => {
     return request(app)
       .post('/api/v1/orders')
       .send({ quantity: 10 })
@@ -34,7 +34,7 @@ describe('Lab 3 Route Tests', () => {
   });
 
   // GET TEST
-  it('ASYNC/AWAIT: retrieves an order in our database', async () => {
+  it('Retrieves an order in our database', async () => {
     const res = await request(app).get('/api/v1/orders');
 
     expect(res.body[0]).toEqual({
@@ -44,8 +44,18 @@ describe('Lab 3 Route Tests', () => {
   });
 
   // GET BY ID TEST
-  it('gets one order by :id', async () => {
+  it('Gets one order by :id', async () => {
     const res = await request(app).get('/api/v1/orders/1');
+
+    expect(res.body).toEqual({
+      id: '1',
+      quantity: 10,
+    });
+  });
+
+  //PUT BY ID TEST
+  it('Updates orders by :id', async () => {
+    const res = await request(app).put('/api/v1/orders/1');
 
     expect(res.body).toEqual({
       id: '1',
